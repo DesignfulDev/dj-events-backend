@@ -12,10 +12,11 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   //Find with populate ----------------------------------------
   async find(ctx) {
     const populateList = ["image", "user"];
+
     // Push any additional query params to the array
     populateList.push(ctx.query.populate);
     ctx.query.populate = populateList.join(",");
-    // console.log(ctx.query)
+
     const content = await super.find(ctx);
     return content;
   },
@@ -24,7 +25,9 @@ module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   async create(ctx) {
     let entity;
     ctx.request.body.data.user = ctx.state.user;
+    console.log(ctx.request.body.data.user);
     entity = await super.create(ctx);
+    // console.log(entity);
     return entity;
   },
 
