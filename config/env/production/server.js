@@ -1,5 +1,5 @@
 module.exports = ({ env }) => ({
-  url: env("MY_HEROKU_URL"),
+  url: env("APP_URL"),
   proxy: true,
   app: {
     keys: env.array("APP_KEYS"),
